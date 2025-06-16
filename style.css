@@ -1,0 +1,234 @@
+/* Basic Reset and Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* This font import is handled in index.html for global application */
+}
+
+/* Custom bounce animation for message alerts */
+.animate-bounce-custom {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+/* Admin mode toggle switch styling (for better visibility) */
+/* Hidden checkbox */
+input[type="checkbox"].sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Style the track */
+input[type="checkbox"].sr-only + .block {
+    background-color: #d1d5db; /* gray-300 */
+}
+
+/* Style the dot */
+input[type="checkbox"].sr-only + .block + .dot {
+    background-color: #fff;
+    left: 4px; /* Adjust initial position */
+    top: 4px; /* Adjust initial position */
+}
+
+/* Move the dot when checked */
+input[type="checkbox"].sr-only:checked + .block + .dot {
+    transform: translateX(100%);
+    background-color: #3b82f6; /* blue-600 */
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; /* For horizontal scrollbars if any */
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Styles for the sliding category menu (sidebar) */
+#categoryFilterContainer {
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(-100%); /* Initially hidden off-screen */
+}
+
+#categoryFilterContainer.open {
+    transform: translateX(0); /* Slides into view */
+}
+
+/* Overlay for when category menu is open */
+#overlay {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 20; /* Below category menu but above main content */
+}
+
+/* Modal specific styles */
+#detailsModal > div {
+    transform: scale(0.7); /* Smaller initial scale */
+    opacity: 0; /* Hidden initially */
+}
+
+#detailsModal.active > div {
+    transform: scale(1); /* Full scale when active */
+    opacity: 1; /* Fully visible */
+}
+
+/* Ensure main content is pushed to the right when category menu is open on smaller screens */
+@media (max-width: 640px) {
+    body.category-open #mainContent {
+        margin-left: 16rem; /* Width of the category sidebar (w-64) */
+        /* This will push the main content to the right, making space for the sidebar */
+    }
+}
+
+
+/* Carousel specific styles */
+.carousel-container {
+    position: relative;
+    max-width: 800px; /* Adjust as needed */
+    margin: auto;
+    overflow: hidden; /* Hide overflowing parts of images */
+    border-radius: 12px; /* Rounded corners for the carousel */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background-color: #f8fafc; /* Light background */
+}
+
+.carousel-slide {
+    display: none; /* Hide all slides by default */
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Limit image height */
+    object-fit: contain; /* Ensure image fits without cropping */
+    border-radius: 8px; /* Slightly rounded images */
+    margin-bottom: 15px;
+    background-color: #fff; /* White background for images */
+    padding: 10px; /* Padding around image */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.carousel-slide p {
+    font-size: 1.125rem; /* text-lg */
+    color: #4a5568; /* gray-700 */
+    font-weight: 500; /* Medium font weight */
+}
+
+/* Navigation buttons (arrows) */
+.carousel-prev, .carousel-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 50%; /* Circular buttons */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Dots for navigation */
+.carousel-dots {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: #717171;
+}
+
+/* Optional: Fade animation for slides */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+/* Category specific button colors */
+.category-education { background-color: #1a73e8; color: white; } /* Blue */
+.category-healthcare { background-color: #ea4335; color: white; } /* Red */
+.category-agriculture { background-color: #34a853; color: white; } /* Green */
+.category-religious { background-color: #fbbc05; color: white; } /* Yellow */
+.category-market { background-color: #4285f4; color: white; } /* Google Blue */
+.category-bank { background-color: #9c27b0; color: white; } /* Purple */
+.category-ngo { background-color: #00bcd4; color: white; } /* Cyan */
+.category-infrastructure { background-color: #ff9800; color: white; } /* Orange */
+.category-population { background-color: #e91e63; color: white; } /* Pink */
+.category-all { background-color: #607d8b; color: white; } /* Blue Grey */
+
+/* Hover effects for colorful buttons */
+.category-education:hover { background-color: #155bb5; }
+.category-healthcare:hover { background-color: #c42d20; }
+.category-agriculture:hover { background-color: #2b8445; }
+.category-religious:hover { background-color: #d19a04; }
+.category-market:hover { background-color: #356bdc; }
+.category-bank:hover { background-color: #7b1fa2; }
+.category-ngo:hover { background-color: #008fa0; }
+.category-infrastructure:hover { background-color: #e68a00; }
+.category-population:hover { background-color: #c51151; }
+.category-all:hover { background-color: #455a64; }
+
