@@ -102,7 +102,7 @@ const translations = {
         termsOfUse: "ব্যবহারের শর্তাবলী",
         contact: "যোগাযোগ",
         footerContact: "যোগাযোগ করুন",
-        contactDetails: "ইমেইল: info@smartbangladirectory.com<br>ফোন: +880 1XXXXXXXXX<br>ঠিকানা: ঢাকা, বাংলাদেশ",
+        contactDetails: "ইমেইল: info@smartbangladirectory.com<br>ফোন: +880 1867912167<br>ঠিকানা: ঢাকা, বাংলাদেশ",
         selectDivision: "বিভাগ নির্বাচন করুন",
         selectDistrict: "জেলা নির্বাচন করুন",
         selectUpazila: "উপজেলা নির্বাচন করুন",
